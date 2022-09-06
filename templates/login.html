@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+                <div class="message">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div>
+                            {{ messages[0] }}.
+                            If you do not have an account yet, you can 
+                            <a href="{{ url_for('signup') }}">
+                                <button>SIGNUP</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+    <form action="/login" method="POST">
+        <div class="form-container">
+            <h1>Log In</h1>
+            <hr>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+            <div class="clearfix">
+            <button type="submit" class="signupbtn">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="home" class="header">
+    <div class="img-wrapper">
+        <img src="{{ url_for('static',filename='img/young-male-psysician-with-patient-measuring-blood-pressure (1).jpg') }}" alt="" srcset="">
+    </div>
+    <div class="banner">
+        <h1>Heart-Care Project</h1>
+        <p>An IOT Solution for Cardiovascular Health Monitoring and Preservation</p>
+        <a href="#select"><button> Get Started</button></a>
+    </div>
+</div>
+
+<section id="select" class="selector">
+
+    <div class="button-wrapper">
+        <a href="{{ url_for('login') }}">
+            <button>LOGIN</button>
+        </a>
+        <a href="{{ url_for('signup') }}">
+            <button>SIGNUP</button>
+        </a>
+    </div>
+        
+</section>
+
+{% endblock %}

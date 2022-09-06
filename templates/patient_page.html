@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <nav class="navbar navbar-expand-lg bg-light sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href=""><i class="fa fa-user"></i>{{user_type}}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item me-auto">
+                      <a class="nav-link" href="/logout">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <section id="data-visual" class="data-visual">
+            <div class="section-header">
+                <h1 class="section-heading">Data Visualization</h1>
+                <div class="underline"></div>
+            </div>
+            <div class="visual-section-body">
+                <div class="row">
+                    <div class="col-md-6 vital">
+                        <h3>Blood Sugar <i class="fas fa-atom" aria-hidden="true"></i></h3>
+                        <p>{{glucose_level}} mg/dl</p>
+
+                    </div>
+                    <div class="col-md-6 vital">
+                        <h3>Cholesterol <i class="fa fa-fire" aria-hidden="true"></i></h3>
+                        <p>{{fat}} mg/dl</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 vital">
+                        <h3>Heart Rate<i class="fa fa-heartbeat" aria-hidden="true"></i>
+                        </h3>
+                        <p>{{ heart_rate }} bpm</p>
+                    </div>
+                    <div class="col-md-6 vital">
+                        <h3>Blood Pressure
+                            <i class="fa fa-tint" aria-hidden="true"></i>
+                        </h3>
+                        <p>{{blood_pressure}} mmHg</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 vital">
+                        <h3>Body Temperature
+                            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+                        </h3>
+                        <p>{{body_temp}} 'C</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div>
+                <span class="time">
+                    <p>Time of Last Measurement: {{time}}</p>
+                </span>
+            </div>
+            
+            </section>
+            <section id="check-heart-status" class="check-heart-status">
+                <div class="row">
+                    <div class="col-lg-6 item">
+                        <h1>Clinical Symptoms of Chest Pain</h1>
+                        <p class="list-items"> 
+                            <ul>
+                                <li>Substernal Chest discomfort of characteristic quality and duration</li>
+                                <li>Provoked by exertion or emotional stress</li>
+                                <li>Relieved by rest and/or nitroglycerine</li>
+                            </ul>
+                        </p>
+                        <table item-height="10rem">
+                            <thead>
+                                <th><h1>Clinical Classification of Chest Pain</h1></th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p>Typical Angina (definite)</p></td>
+                                    <td><p>Satisfies three symptoms</p></td>
+                                </tr>
+                                <tr>
+                                    <td> <p> Atypical Angina (probable) </p></td>
+                                    <td> <p> Meets any two of the symptoms </p></td>
+                                </tr>
+                                <tr>
+                                    <td> <p> Non-Cardiac Chest Pain </p></td>
+                                    <td> <p> Meets one or none of the symptoms </p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <br> <br><br>
+                        <div class="diagnosis">
+                            <h2>
+                                RESULT:
+                            </h2>
+                            <p>
+                                {{working}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 item">
+                        <p>Follow the instructions on the IOT wearable manual and fill this form accordingly;</p>
+                        <div class="form-wrapper">
+                            <form action="/patient_page" method="POST">
+                                <div class="mb-3">
+                                    <label for="age" class="form-label">Age:</label>
+                                    <input type="number" name="age" aria-describedby="age" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label">Sex:</label>
+                                    <select name="sex" id="sex" required>
+                                        <option value="0">Female</option>
+                                        <option value="1">Male</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exang">Do you experience any chest pain when you exercise?</label>
+                                    <select name="exang" id="exang">
+                                        <option value="" disabled selected>---</option>
+                                        <option value="0">No pain at all</option>
+                                        <option value="1">Mild pain</option>
+                                        <option value="2">Severe Pain</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cp" class="form-label">Using the guide provided above, What kind of chest pain do you have?: </label>
+                                    <select name="cp" id="cp" required>
+                                        <option value="" disabled selected>---</option>
+                                        <option value="0">All 3 - Typical Angina</option>
+                                        <option value="1">Any 2 - Atypical Agina</option>
+                                        <option value="2">1 or none - Non Cardiac Pain</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Run Check</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Check Result
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Result of ML Check:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="diagnosis">
+                    <p>
+                        {{working}}
+                    </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            </section>
+
+{% endblock %}

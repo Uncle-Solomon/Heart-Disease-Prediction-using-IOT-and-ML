@@ -1,0 +1,594 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: 50%;
+}
+
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #262626;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  z-index: 300;
+}
+
+.display .spinner-container {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.circles {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  animation: displayCircles 4s;
+}
+
+@keyframes displayCircles {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  25% {
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.circles div {
+  animation: circles 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 4rem 4rem;
+}
+
+.circles div::after {
+  content: "";
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: #af111c;
+  margin: -0.4rem 0 0 -0.4rem;
+}
+
+.circles div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.circles div:nth-child(1)::after {
+  top: 6.3rem;
+  left: 6.3rem;
+}
+
+.circles div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.circles div:nth-child(2)::after {
+  top: 6.8rem;
+  left: 5.6rem;
+}
+
+.circles div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.circles div:nth-child(3)::after {
+  top: 7.1rem;
+  left: 4.8rem;
+}
+
+.circles div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.circles div:nth-child(4)::after {
+  top: 7.2rem;
+  left: 4rem;
+}
+
+.circles div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.circles div:nth-child(5)::after {
+  top: 7.1rem;
+  left: 3.2rem;
+}
+
+.circles div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.circles div:nth-child(6)::after {
+  top: 6.8rem;
+  left: 2.4rem;
+}
+
+.circles div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.circles div:nth-child(7)::after {
+  top: 6.3rem;
+  left: 1.7rem;
+}
+
+.circles div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.circles div:nth-child(8)::after {
+  top: 5.6rem;
+  left: 1.2rem;
+}
+
+@keyframes circles {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.contain {
+  display: none;
+}
+
+.display .contain {
+  display: block;
+  background-color: #f5f5f5;
+
+}
+
+
+
+
+.header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  perspective: 100rem;
+  overflow: hidden;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  overflow: hidden;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  animation: scale 30s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scale {
+  0% {
+      transform: scale(1.5);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.banner {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.banner h1 {
+  font-size: 8rem;
+  font-weight: 100;
+  color: white;
+  width: 50%;
+  line-height: 9rem;
+  letter-spacing: .2rem;
+  text-shadow: 0 0.3rem .5rem rgba(0,0,0, .4);
+  animation: moveBanner .6s forwards;
+}
+.banner p {
+  font-size: 2.5rem;
+  color: #fff;
+  width: 70%;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 .3rem .5rem rgba(0,0,0, 0.4rem);
+  opacity: 0;
+  animation: moveBanner 1.2s forwards;
+
+}
+
+@keyframes moveBanner {
+  0% {
+      transform: translateY(40rem) rotateY(-20deg);
+  }
+  100% {
+      transform: translateY(0) rotateY(0);
+      opacity: 1;
+  }
+}
+
+.banner button {
+  width: 25rem;
+  height: 7rem;
+  background-color: #af111c;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 0.2rem .4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  animation: moveBanner 2s forwards;
+  position: relative;
+
+}
+
+.banner button:hover {
+  top: 2px;
+}
+.banner button a {
+  text-decoration: none;
+}
+
+
+nav {
+font-size: 2.5rem;
+padding: 5px;
+}
+
+.navbar-brand {
+color: #af111c;
+font-size: 2.5rem;
+}
+
+.data-visual, .check-heart-status, .recommendations, .emergency-contacts {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+i {
+  color: #af111c;
+}
+
+
+
+.section-header {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.underline {
+  width:30rem;
+  height: .3rem;
+  background: #af111c;
+  animation: underliner 4s;
+  animation-iteration-count: infinite;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4rem;
+}
+
+@keyframes underliner {
+  0% {
+      width: 0;
+  }
+  100% {
+      width: 30rem;
+  }
+}
+
+
+.section-heading {
+  padding-top: 4rem;
+  font-size: 5rem;
+  color: #4b4b4b;
+}
+
+.visual-section-body {
+  width: 80%;
+  height: 60%;
+  padding: 1rem;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.heart-section-body {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.item {
+  margin-bottom: 10px;
+}
+
+.item li {
+  list-style: circle;
+  font-size: 2rem;
+}
+.item h1 {
+  margin-top: 10px;
+  font-size: 3rem;
+}
+.item p {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+.visual-section-body .time {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 2rem;
+}
+.vital {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.vital h3 {
+  color: #4b4b4b;
+  font-size: 4rem;
+}
+
+.vital p {
+  font-size: 2rem;
+}
+
+.section-body p {
+    margin: auto;
+    width: 60%;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form-wrapper {
+  background: url(paper-pattern.jpg) top left repeat;
+  width: 100%;
+  height: 90vh;
+  padding: 50px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px -8px #000;
+    
+}
+
+.selector {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 60rem;
+  height: 35vh;
+  margin: 0 auto 0 auto;
+  padding: 5px;
+}
+
+.button-wrapper button {
+  width: 25rem;
+  height: 7rem;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #af111c;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 0.2rem .4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  animation: moveBanner 2s forwards;
+  position: relative;
+}
+
+label {
+    font-size: 2rem;
+}
+
+input[type=number] {
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 3rem;
+}
+
+form select {
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 2rem;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+}
+   
+  
+/* Set a style for all buttons */
+.form-wrapper button {
+  width: 15rem;
+  height: 5rem;
+  margin-top: 10px;
+  background-color: #af111c;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 0.2rem .4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  position: relative;
+}
+
+.form-wrapper button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.form-container {
+  width: 50%;
+  margin: auto;
+  padding: 16px;
+}
+
+.form-container input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  font-size: 2rem;
+}
+
+.form-container input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container h1 {
+  font-size: 4rem;
+}
+
+.form-container hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+.form-container button {
+  background-color: #af111c;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 2rem;
+}
+
+.form-container button:hover {
+  opacity:1;
+}
+
+
+.message {
+  background: red;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.diagnosis, .time {
+  font-size: 2rem;
+}
+
+table p {
+  font-size: 1rem;
+}
+table h1 {
+  font-size: 2rem;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .signupbtn {
+    width: 100%;
+  }
+}
+
+
+@media(max-width: 1600px) {
+  html {
+      font-size: 45%;
+  }
+}
+
+@media(max-width: 1000px) {
+  html {
+      font-size: 30%;
+  }
+}
+
+@media(max-width: 820px) {
+  html {
+      font-size: 30%;
+  }
+  
+}
+@media(max-width: 600px) {
+  html {
+      font-size: 30%;
+  }
+}
+@media(max-width: 400px) {
+  html {
+      font-size: 30%;
+  }
+}
+@media(max-width: 300px) {
+  html {
+      font-size: 20%;
+  }
+}
