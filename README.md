@@ -8,6 +8,3 @@ To test clone the repository (https://github.com/Uncle-Solomon/Heart-Disease-Pre
 Install packages in Requirements.txt file and and then run:
 
 ### `python app.py`
-
-## To test online
-Visit the url: https://heart-care-app-project.herokuapp.com/
