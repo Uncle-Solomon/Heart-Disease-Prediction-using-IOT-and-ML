@@ -8,7 +8,6 @@ import flask
 import pandas as pd
 import joblib
 import pickle
-import numpy as np
 
 
 app = Flask(__name__)
